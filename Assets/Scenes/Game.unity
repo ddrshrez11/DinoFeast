@@ -1034,12 +1034,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358b588994efcf440b091950abab096b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  size: 0
+  speed: 10
+  size: 3
   count: 0
-  DieText: {fileID: 0}
-  forwardForce: 800
-  sidewaysForce: 800
+  DieText: {fileID: 732278498}
+  MoveForce: 10
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,6 +1751,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 776294602}
     m_Modifications:
+    - target: {fileID: 6620198274496286770, guid: 4860aa6cfa4d91344bf613884ef40e61,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5005077211169841927, guid: 4860aa6cfa4d91344bf613884ef40e61,
         type: 3}
       propertyPath: m_Name

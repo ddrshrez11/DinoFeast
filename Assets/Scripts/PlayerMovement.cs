@@ -8,8 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public int count;
     public Text DieText;
     private Rigidbody rb;
-    public float forwardForce;
-    public float sidewaysForce;
+    public float MoveForce;
     private bool moveRight;
     private bool moveLeft;
     private bool moveForward;
@@ -50,19 +49,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if (moveForward)
         {
-            rb.AddForce(0, 0, forwardForce * Time.deltaTime);
+            rb.AddForce(0, 0, MoveForce * Time.deltaTime,ForceMode.VelocityChange);
         }
         if (moveBackward)
         {
-            rb.AddForce(0, 0, -forwardForce * Time.deltaTime);
+            rb.AddForce(0, 0, -MoveForce * Time.deltaTime, ForceMode.VelocityChange);
         }
         if (moveRight)
         {
-            rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0/*, ForceMode.VelocityChange*/);
+            rb.AddForce(MoveForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
         if (moveLeft)
         {
-            rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0/*, ForceMode.VelocityChange*/);
+            rb.AddForce(-MoveForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
         if (rb.position.y < -1f)
         {
@@ -75,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Pickup"))
         {
-            if(other.GetComponent<PickupMovement>().size < size)
+            if(other.GetComponent<Patrol>().size < size)
             {
                  other.gameObject.SetActive(false);
                  count++;

@@ -5,9 +5,9 @@ using UnityEngine;
 public class Patrol : MonoBehaviour
 {
     public int size;
-    public float speed;
-    public float FollowDist;
-    public float RetreatDist;
+    public float speed=2;
+    public float FollowDist=12;
+    public float RetreatDist=10;
     private Transform target;
 
 /*    private float waitTime;
@@ -35,36 +35,37 @@ public class Patrol : MonoBehaviour
                 waitTime += Time.deltaTime;
             }
         }*/
+        transform.Rotate(new Vector3(15, 30, 45) * Time.deltaTime);
         if (size >= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().size)
         {
             if (Vector3.Distance(transform.position, target.position) < FollowDist)
             {
                 Vector3 move = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-                move.y = 0;
+                move.y = 0.6f * size;
                 transform.position = move;
             }
         }
         else if (size == 0)
         {
-            if ((Vector3.Distance(transform.position, target.position) < RetreatDist) && (Vector3.Distance(transform.position, target.position)) > 3)
+            if ((Vector3.Distance(transform.position, target.position) < RetreatDist))
             {
-                Vector3 move = Vector3.MoveTowards(transform.position, target.position, -speed * 0.6f * Time.deltaTime);
-                move.y = 0;
+                Vector3 move = Vector3.MoveTowards(transform.position, target.position, -speed * 0.1f * Time.deltaTime);
+                move.y = 0.6f * size;
                 transform.position = move;
             }
         }
         else if (size < GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().size)
         {
-            if (Vector3.Distance(transform.position, target.position) < 3)
+            if (Vector3.Distance(transform.position, target.position) < 7)
             {
-                Vector3 move = Vector3.MoveTowards(transform.position, target.position, -speed * 0.7f * Time.deltaTime);
-                move.y = 0;
+                Vector3 move = Vector3.MoveTowards(transform.position, target.position, -speed * 0.8f * Time.deltaTime);
+                move.y = 0.6f * size;
                 transform.position = move;
             }
             else if ((Vector3.Distance(transform.position, target.position) < RetreatDist))
             {
-                Vector3 move = Vector3.MoveTowards(transform.position, target.position, -speed * 0.5f * size * Time.deltaTime);
-                move.y = 0;
+                Vector3 move = Vector3.MoveTowards(transform.position, target.position, -speed * 0.8f * size * Time.deltaTime);
+                move.y = 0.6f * size    ;
                 transform.position = move;
             }
         }

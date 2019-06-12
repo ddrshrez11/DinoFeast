@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4013521022141871519}
   - component: {fileID: 8868430638134334613}
   - component: {fileID: 6620198274496286770}
+  - component: {fileID: 4012601488833115557}
   m_Layer: 0
   m_Name: Pickup-0
   m_TagString: Pickup
@@ -154,9 +155,25 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5005077211169841927}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b93895d44bf48df42b4848c46e7d3a51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   size: 0
+--- !u!114 &4012601488833115557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005077211169841927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce10d90ee64466b4195683ea7756d19b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 0
+  speed: 2
+  FollowDist: 20
+  RetreatDist: 10
