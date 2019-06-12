@@ -66,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
         if (rb.position.y < -1f)
         {
             Debug.Log("Game Over");
+            DieText.text = "You Are Dead!";
             //FindObjectOfType<GameManager>().EndGame();
         }
     }

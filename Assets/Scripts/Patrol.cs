@@ -58,14 +58,14 @@ public class Patrol : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, target.position) < 7)
             {
-                Vector3 move = Vector3.MoveTowards(transform.position, target.position, -speed * 0.8f * Time.deltaTime);
+                Vector3 move = Vector3.MoveTowards(transform.position, target.position, -speed * Time.deltaTime);
                 move.y = 0.6f * size;
                 transform.position = move;
             }
             else if ((Vector3.Distance(transform.position, target.position) < RetreatDist))
             {
-                Vector3 move = Vector3.MoveTowards(transform.position, target.position, -speed * 0.8f * size * Time.deltaTime);
-                move.y = 0.6f * size    ;
+                Vector3 move = Vector3.MoveTowards(transform.position, target.position, -speed * size * Time.deltaTime);
+                move.y = 0.6f * size;
                 transform.position = move;
             }
         }

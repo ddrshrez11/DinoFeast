@@ -175,5 +175,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 1
   speed: 2
-  FollowDist: 20
+  FollowDist: 12
   RetreatDist: 10
