@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 5005077211169841977}
   - component: {fileID: -854326684978599164}
   - component: {fileID: 1564342870861040550}
+  - component: {fileID: -7311810265272156921}
+  - component: {fileID: 3306494838005333701}
   m_Layer: 0
   m_Name: Pickup-3
   m_TagString: Pickup
@@ -117,7 +119,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5005077211169841927}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 814e0d4d4e2aa0e4697306083571cf87, type: 3}
   m_Name: 
@@ -131,7 +133,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5005077211169841927}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 1.25
   m_Speed: 3.5
@@ -146,3 +148,32 @@ NavMeshAgent:
   m_BaseOffset: 0.5000001
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-7311810265272156921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005077211169841927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93895d44bf48df42b4848c46e7d3a51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 3
+--- !u!114 &3306494838005333701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005077211169841927}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce10d90ee64466b4195683ea7756d19b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 0
+  speed: 0
+  FollowDist: 0
+  RetreatDist: 0

@@ -8,6 +8,12 @@ public class PlayerMovement : MonoBehaviour
     public int count;
     public Text DieText;
     private Rigidbody rb;
+    public float forwardForce;
+    public float sidewaysForce;
+    private bool moveRight;
+    private bool moveLeft;
+    private bool moveForward;
+    private bool moveBackward;
 
     void Start()
     {
@@ -17,14 +23,52 @@ public class PlayerMovement : MonoBehaviour
         DieText.text = "";
     }
 
+    private void Update()
+    {
+        moveForward = false;
+        moveBackward = false;
+        moveLeft = false;
+        moveRight = false;
+        if (Input.GetKey("w"))
+        {
+            moveForward = true;
+        }
+        if (Input.GetKey("s"))
+        {
+            moveBackward = true;
+        }
+        if (Input.GetKey("d"))
+        {
+            moveRight = true;
+        }
+        if (Input.GetKey("a"))
+        {
+            moveLeft = true;
+        }
+    }
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-
-        rb.AddForce(movement * speed);
+        if (moveForward)
+        {
+            rb.AddForce(0, 0, forwardForce * Time.deltaTime);
+        }
+        if (moveBackward)
+        {
+            rb.AddForce(0, 0, -forwardForce * Time.deltaTime);
+        }
+        if (moveRight)
+        {
+            rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0/*, ForceMode.VelocityChange*/);
+        }
+        if (moveLeft)
+        {
+            rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0/*, ForceMode.VelocityChange*/);
+        }
+        if (rb.position.y < -1f)
+        {
+            Debug.Log("Game Over");
+            //FindObjectOfType<GameManager>().EndGame();
+        }
     }
 
     void OnTriggerEnter(Collider other)
