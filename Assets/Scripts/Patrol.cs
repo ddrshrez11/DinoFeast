@@ -1,41 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Patrol : MonoBehaviour
 {
     public int size;
-    public float speed=2;
-    public float FollowDist=12;
-    public float RetreatDist=10;
+    public float speed=4;
+    public float FollowDist = 12;
+    public float RetreatDist = 10;
     private Transform target;
-
-/*    private float waitTime;
-    private float StartWaitTime;
-    public Transform[] moveSpots;
-    private int randomSpot;*/
+    private Vector3 Position;
+    private Vector3 moveSpot;
+    private float waitTime;
+    public float StartWaitTime;
+    
 
     void Start()
     {
-        /*randomSpot = Random.Range(0,moveSpots.Length);*/
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        Position = transform.position;
+        moveSpot = new Vector3(Random.Range(Position.x - 50, Position.x + 50), Position.y, Random.Range(Position.z - 50, Position.z + 50));
     }
     void Update()
     {
-        /*transform.position = Vector2.MoveTowards(transform.position, moveSpots[randomSpot].position, speed * Time.deltaTime);
-        if (Vector3.Distance(transform.position, moveSpots[randomSpot].position)<0.2f)
-        {
-            if (waitTime <= 0)
-            {
-                randomSpot = Random.Range(0, moveSpots.Length);
-                waitTime = StartWaitTime;
-            }
-            else
-            {
-                waitTime += Time.deltaTime;
-            }
-        }*/
         transform.Rotate(new Vector3(15, 30, 45) * Time.deltaTime);
+
         if (size >= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().size)
         {
             if (Vector3.Distance(transform.position, target.position) < FollowDist)
@@ -44,14 +31,22 @@ public class Patrol : MonoBehaviour
                 move.y = 0.6f * size;
                 transform.position = move;
             }
+            else
+            {
+                RandomMov();
+            }
         }
         else if (size == 0)
         {
             if ((Vector3.Distance(transform.position, target.position) < RetreatDist))
             {
                 Vector3 move = Vector3.MoveTowards(transform.position, target.position, -speed * 0.1f * Time.deltaTime);
-                move.y = 0.6f * size;
+                move.y = 0.5f;
                 transform.position = move;
+            }
+            else
+            {
+                RandomMov();
             }
         }
         else if (size < GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().size)
@@ -67,6 +62,27 @@ public class Patrol : MonoBehaviour
                 Vector3 move = Vector3.MoveTowards(transform.position, target.position, -speed * size * Time.deltaTime);
                 move.y = 0.6f * size;
                 transform.position = move;
+            }
+            else
+            {
+                RandomMov();
+            }
+        }
+       
+    }
+    void RandomMov()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, moveSpot, speed * Time.deltaTime);
+        if (Vector3.Distance(transform.position, moveSpot) < 0.2f)
+        {
+            if (waitTime <= 0)
+            {
+                moveSpot = new Vector3(Random.Range(Position.x - 50, Position.x + 50), Position.y, Random.Range(Position.z - 50, Position.z + 50));
+                waitTime = StartWaitTime;
+            }
+            else
+            {
+                waitTime -= Time.deltaTime;
             }
         }
     }
