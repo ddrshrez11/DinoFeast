@@ -6,7 +6,7 @@ public class PickupMovement : MonoBehaviour
     public int size;
     float timeCounter = 0;
 
-    float speed;
+    float speed=2;
     float width;
     Vector3 PUPosition;
     void Start()

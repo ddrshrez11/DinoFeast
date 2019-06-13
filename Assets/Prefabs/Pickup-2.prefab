@@ -13,9 +13,6 @@ GameObject:
   - component: {fileID: 5005077211169841978}
   - component: {fileID: -9025213278889544878}
   - component: {fileID: 5005077211169841977}
-  - component: {fileID: 4685233994702761905}
-  - component: {fileID: 5677178569030633316}
-  - component: {fileID: 4335268987925252049}
   - component: {fileID: -2553044125370217941}
   m_Layer: 0
   m_Name: Pickup-2
@@ -98,7 +95,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!65 &5005077211169841977
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -112,55 +109,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4685233994702761905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5005077211169841927}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 814e0d4d4e2aa0e4697306083571cf87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timer: 0
-  nav: {fileID: 0}
---- !u!195 &5677178569030633316
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5005077211169841927}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 1.25
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0.5000001
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &4335268987925252049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5005077211169841927}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b93895d44bf48df42b4848c46e7d3a51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  size: 2
 --- !u!114 &-2553044125370217941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 2
-  speed: 2
+  speed: 6
   FollowDist: 17
   RetreatDist: 10
+  StartWaitTime: 0

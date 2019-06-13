@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public int size;
     public int count;
-    public Text DieText;
     private Rigidbody rb;
     public float MoveForce;
     private bool moveRight;
@@ -19,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         size = 1;
         count = 0;
-        DieText.text = "";
     }
 
     private void Update()
@@ -28,19 +26,19 @@ public class PlayerMovement : MonoBehaviour
         moveBackward = false;
         moveLeft = false;
         moveRight = false;
-        if (Input.GetKey("w"))
+        if (Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow))
         {
             moveForward = true;
         }
-        if (Input.GetKey("s"))
+        if (Input.GetKey("s") || Input.GetKey(KeyCode.DownArrow))
         {
             moveBackward = true;
         }
-        if (Input.GetKey("d"))
+        if (Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow))
         {
             moveRight = true;
         }
-        if (Input.GetKey("a"))
+        if (Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow))
         {
             moveLeft = true;
         }
@@ -64,10 +62,8 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(-MoveForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
         if (rb.position.y < -1f)
-        {
-            Debug.Log("Game Over");
-            DieText.text = "You Are Dead!";
-            //FindObjectOfType<GameManager>().EndGame();
+        { 
+            FindObjectOfType<GameManager>().EndGame();
         }
     }
 
@@ -89,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 gameObject.SetActive(false);
-                DieText.text = "You Are Dead!";
+                FindObjectOfType<GameManager>().EndGame();
             }
             
         }
