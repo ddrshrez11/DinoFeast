@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
             {
                  other.gameObject.SetActive(false);
                  count++;
-                 if (count ==2)
+                 if (count ==3)
                 {
                     size++;
                     transform.localScale = new Vector3(1 * size, 1 * size, 1 * size);

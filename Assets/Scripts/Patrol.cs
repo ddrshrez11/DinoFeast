@@ -28,7 +28,7 @@ public class Patrol : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, target.position) < FollowDist)
             {
-                Vector3 move = Vector3.MoveTowards(transform.position, target.position, speed * .8f * Time.deltaTime);
+                Vector3 move = Vector3.MoveTowards(transform.position, target.position, speed * .65f * Time.deltaTime);
                 move.y = 0.7f * size;
                 transform.position = move;
             }
@@ -52,15 +52,15 @@ public class Patrol : MonoBehaviour
         }
         else if (size < GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().size)
         {
-            /*if (Vector3.Distance(transform.position, target.position) < 7)
+            if (Vector3.Distance(transform.position, target.position) < 7)
             {
-                Vector3 move = Vector3.MoveTowards(transform.position, target.position, -speed *.4f * Time.deltaTime);
+                Vector3 move = Vector3.MoveTowards(transform.position, target.position, -speed * .4f * Time.deltaTime);
                 move.y = 0.7f * size;
                 transform.position = move;
             }
-            else*/ if ((Vector3.Distance(transform.position, target.position) < RetreatDist))
+            else if ((Vector3.Distance(transform.position, target.position) < RetreatDist))
             {
-                Vector3 move = Vector3.MoveTowards(transform.position, target.position, -speed *.8f* size * Time.deltaTime);
+                Vector3 move = Vector3.MoveTowards(transform.position, target.position, -speed *.65f* size * Time.deltaTime);
                 move.y = 0.7f * size;
                 transform.position = move;
             }
